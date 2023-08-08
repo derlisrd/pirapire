@@ -6,7 +6,7 @@ export const ApiLogin = async(body)=>{
     try {
         let res = await axios({
             method: 'post',
-            url: 'https://api.ruizdiaz.dev/api/auth/local',
+            url: `${env.PUBLIC_API_URL}api/auth/local`,
             headers: { 
                 'Content-Type': 'application/json', 
                 'Accept': 'application/json'
