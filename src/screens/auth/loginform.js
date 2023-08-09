@@ -3,9 +3,11 @@ import { SafeAreaView } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { ApiLogin } from '../../Services/api';
 import { useState } from 'react';
+import { useAuthProvider } from '../../Providers/AuthProvider';
 
-function LoginForm() {
+function LoginForm({navigation}) {
   const [show, setShow] = useState(false);
+  const {setIsLogged} = useAuthProvider()
   const [loading,setLoading] = useState(false)
   const [form, setForm] = useState({
     identifier: null,
@@ -20,6 +22,9 @@ function LoginForm() {
     setLoading(true)
     let res = await ApiLogin(form);
     console.log(res);
+    if(res.response){
+      setIsLogged(true)
+    }
     setLoading(false)
   };
 

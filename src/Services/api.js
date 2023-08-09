@@ -14,9 +14,9 @@ export const ApiLogin = async(body)=>{
             data : JSON.stringify(body)
         })
 
-        return res.data;
+        return {response: true, data: res.data};
 
     } catch (error) {
-        return error;
+        return {response:false,message:error.message};
     }
 }

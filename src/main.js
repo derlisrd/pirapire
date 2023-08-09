@@ -1,14 +1,14 @@
-import { SafeAreaView, Text, View } from "react-native";
+import { useAuthProvider } from "./Providers/AuthProvider";
+import MainScreens from "./screens/MainScreens";
+import AuthStacks from "./screens/auth/AuthStacks";
 
-import { Button,Box } from "native-base";
-import LoginForm from "./screens/auth/loginform";
 
-import { env } from "./config/env";
+
+
 
 function Main() {
-
-
-  return <LoginForm />
+  const {isLogged} = useAuthProvider()
+  return isLogged ? <MainScreens /> : <AuthStacks />
 }
 
 export default Main;
