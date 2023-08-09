@@ -1,4 +1,5 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
 import ScreenMaster from './ScreenMaster';
 
 const Stack = createNativeStackNavigator();
