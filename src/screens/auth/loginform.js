@@ -1,4 +1,5 @@
-import { Input, Icon, Pressable, Box, Button,HStack,Spinner } from 'native-base';
+import { Input, Icon, Pressable, Box, Button,HStack,Spinner, Text } from 'native-base';
+import Icono from 'react-native-vector-icons/MaterialCommunityIcons'
 import { SafeAreaView } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { ApiLogin } from '../../Services/api';
@@ -37,11 +38,17 @@ function LoginForm({navigation}) {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <Box flex={1} alignItems="center" justifyContent="center" mx={5}>
+        <Box justifyContent='center' alignItems='center' marginY={5}>
+        <Icono name="fish" size={30} color="#06C" />
+          <Text>PIRA PIRE</Text>
+          <Text>Control de gastos</Text>
+        </Box>
         <Input
           mx={3}
           p={3}
           my={2}
           w="100%"
+          fontFamily="body"
           onChangeText={(text)=>{ changeText('identifier',text)}}
           placeholder="Email"
           InputLeftElement={<Icon marginLeft={3} as={<MaterialIcons name="person" />}  />}
@@ -50,7 +57,7 @@ function LoginForm({navigation}) {
           mx={3}
           p={3}
           my={2}
-          w="100%"
+          w="100%" fontFamily='body'
           placeholder="Password"
           type={show ? 'text' : 'password'}
           onChangeText={(text)=>{ changeText('password',text)}}
@@ -64,7 +71,10 @@ function LoginForm({navigation}) {
             </Pressable>
           }
         />
-        <Button onPress={tryLogin}>LOGIN</Button>
+        <Button onPress={tryLogin}>ENTRAR</Button>
+        <Pressable onPress={() => { navigation.navigate('Register') }}>
+          <Text marginTop={10}>No tiene cuenta? Registrese</Text>
+        </Pressable>
       </Box>
     </SafeAreaView>
   );
